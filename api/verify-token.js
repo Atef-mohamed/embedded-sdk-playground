@@ -41,8 +41,8 @@ export default async function handler(req, res) {
         .json({ success: false, error: "App ID is required" });
     }
 
-    // Determine environment (default to 'dev' when ENV is not set)
-    const environment = process.env.ENV || "dev";
+    // Determine environment (default to 'prod' when ENV is not set)
+    const environment = process.env.ENV || "prod";
 
     // Get API URL based on environment
     const apiUrl = VERIFY_API_URLS[environment];

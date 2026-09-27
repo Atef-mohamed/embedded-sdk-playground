@@ -52,7 +52,7 @@ The app is deployed on [Vercel](https://vercel.com). Vercel builds it with `pnpm
 
 | Name  | Values          | Default | Description                                       |
 | ----- | --------------- | ------- | ------------------------------------------------- |
-| `ENV` | `dev` \| `prod` | `dev`   | Selects which Salla verify API the function calls |
+| `ENV` | `dev` \| `prod` | `prod`  | Selects which Salla verify API the function calls |
 
 ## License
 
