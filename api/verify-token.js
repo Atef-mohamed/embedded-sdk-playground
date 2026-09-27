@@ -81,7 +81,21 @@ export default async function handler(req, res) {
     // Debug log response status
     console.log("Salla API response status:", response.status);
 
-    const result = await response.json();
+    // Guard against non-JSON upstream responses (e.g. HTML error pages)
+    const text = await response.text();
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      console.error(
+        "Salla API returned non-JSON response:",
+        text.slice(0, 200),
+      );
+      return res.status(502).json({
+        success: false,
+        error: `Verify API (${environment}) returned a non-JSON response with status ${response.status}`,
+      });
+    }
 
     // Return the result with appropriate status code
     return res.status(response.status).json(result);
