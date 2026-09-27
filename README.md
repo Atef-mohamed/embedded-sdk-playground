@@ -13,10 +13,12 @@ The test console demonstrates the complete authentication flow:
 ```
 1. embedded.init() - Initialize SDK and get layout info
 2. embedded.auth.getToken() - Get token from URL (?token=XXX)
-3. Verify token with Salla API
+3. Verify token with Salla API (via /api/verify-token)
 4. embedded.ready() - Signal app is ready (removes host loading)
    OR embedded.destroy() - Exit embedded view
 ```
+
+Token verification goes through a Vercel Serverless Function ([api/verify-token.js](api/verify-token.js)), which proxies the request to the Salla exchange authority service.
 
 ## Usage
 
@@ -32,12 +34,25 @@ The test console demonstrates the complete authentication flow:
 # Install dependencies
 pnpm install
 
-# Start dev server
+# Start dev server (frontend only, /api/verify-token is not available)
 pnpm dev
+
+# Start dev server with the serverless function (requires Vercel CLI)
+npx vercel dev
 
 # Build for production
 pnpm build
 ```
+
+## Deployment
+
+The app is deployed on [Vercel](https://vercel.com). Vercel builds it with `pnpm build`, serves `dist`, and deploys everything under `api/` as serverless functions.
+
+### Environment variables
+
+| Name  | Values          | Default | Description                                       |
+| ----- | --------------- | ------- | ------------------------------------------------- |
+| `ENV` | `dev` \| `prod` | `dev`   | Selects which Salla verify API the function calls |
 
 ## License
 
