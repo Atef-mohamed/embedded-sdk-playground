@@ -1,14 +1,10 @@
-# Embedded SDK Playground v0.2.6
+# Embedded App
 
-A developer testing tool for the Salla Embedded SDK.
-
-## Overview
-
-This test console allows you to simulate and debug the communication between an embedded third-party app (iframe) and the Salla Dashboard (host). It sends and receives events using the `@salla.sa/embedded-sdk` package.
+A Salla embedded app built with React + Vite and the `@salla.sa/embedded-sdk` package.
 
 ## Bootstrap Flow
 
-The test console demonstrates the complete authentication flow:
+When the app is opened inside the Salla merchant dashboard, it bootstraps automatically:
 
 ```
 1. embedded.init() - Initialize SDK and get layout info
@@ -24,9 +20,20 @@ Token verification goes through a Vercel Serverless Function ([api/verify-token.
 
 1. Add the deployment link for this app to your test app in Salla Partners
 2. "Run App" from the installed app page in merchant dashboard
-3. The console will auto-run the bootstrap flow
-4. Use the buttons to trigger and test the available events, or use the playground to test through code
-5. You can monitor the message log for incoming/outgoing events
+3. The app will auto-run the bootstrap flow
+
+## Project Structure
+
+```
+api/                 Vercel serverless functions
+src/
+  components/        Reusable UI (Header, StatusBar, Tabs, forms/Button, forms/Checkbox)
+  contexts/          ThemeContext, ToastContext
+  hooks/             SDK hooks (useAppBootstrap, useIframeAutoBootstrap, useThemeSubscription,
+                     useActionClickSubscription, useNavSync, useCheckoutFlow,
+                     useCheckoutResultSubscription)
+  utils/             logger, token verification, constants
+```
 
 ## Development
 

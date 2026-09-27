@@ -14,35 +14,35 @@ describe("logger", () => {
     vi.restoreAllMocks();
   });
 
-  it("prefixes log with [SDK-Playground]", () => {
+  it("prefixes log with [Embedded-App]", () => {
     logger.log("hello");
-    expect(console.log).toHaveBeenCalledWith("[SDK-Playground]", "hello");
+    expect(console.log).toHaveBeenCalledWith("[Embedded-App]", "hello");
   });
 
-  it("prefixes warn with [SDK-Playground]", () => {
+  it("prefixes warn with [Embedded-App]", () => {
     logger.warn("warning");
-    expect(console.warn).toHaveBeenCalledWith("[SDK-Playground]", "warning");
+    expect(console.warn).toHaveBeenCalledWith("[Embedded-App]", "warning");
   });
 
-  it("prefixes error with [SDK-Playground]", () => {
+  it("prefixes error with [Embedded-App]", () => {
     logger.error("error");
-    expect(console.error).toHaveBeenCalledWith("[SDK-Playground]", "error");
+    expect(console.error).toHaveBeenCalledWith("[Embedded-App]", "error");
   });
 
-  it("prefixes info with [SDK-Playground]", () => {
+  it("prefixes info with [Embedded-App]", () => {
     logger.info("info");
-    expect(console.info).toHaveBeenCalledWith("[SDK-Playground]", "info");
+    expect(console.info).toHaveBeenCalledWith("[Embedded-App]", "info");
   });
 
-  it("prefixes debug with [SDK-Playground]", () => {
+  it("prefixes debug with [Embedded-App]", () => {
     logger.debug("debug");
-    expect(console.debug).toHaveBeenCalledWith("[SDK-Playground]", "debug");
+    expect(console.debug).toHaveBeenCalledWith("[Embedded-App]", "debug");
   });
 
   it("formats objects as JSON string in log", () => {
     logger.log({ foo: 1 });
     expect(console.log).toHaveBeenCalledWith(
-      "[SDK-Playground]",
+      "[Embedded-App]",
       expect.stringContaining('"foo": 1'),
     );
   });
@@ -50,7 +50,7 @@ describe("logger", () => {
   it("strips %c and style args from first arg when present", () => {
     logger.log("%cStyled%cMore", "color:red", "color:blue", "message");
     expect(console.log).toHaveBeenCalledWith(
-      "[SDK-Playground]",
+      "[Embedded-App]",
       "StyledMore",
       "message",
     );

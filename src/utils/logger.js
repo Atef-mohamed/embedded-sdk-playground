@@ -1,10 +1,10 @@
 /**
  * Custom logger utility for the SDK test app
- * All logs are prefixed with [SDK-Playground]
+ * All logs are prefixed with [Embedded-App]
  */
 /* global console */
 
-const PREFIX = "[SDK-Playground]";
+const PREFIX = "[Embedded-App]";
 
 /**
  * Strip %c format specifiers and their style arguments from console log args
@@ -60,7 +60,7 @@ function formatArgs(...args) {
 }
 
 /**
- * Custom logger with [SDK-Playground] prefix
+ * Custom logger with [Embedded-App] prefix
  */
 export const logger = {
   log: (...args) => {
