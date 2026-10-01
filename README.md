@@ -64,3 +64,4 @@ The app is deployed on [Vercel](https://vercel.com). Vercel builds it with `pnpm
 ## License
 
 MIT
+# Salek-AI
